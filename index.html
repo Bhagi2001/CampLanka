@@ -23,7 +23,26 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            
+            <div class="nav-right">
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="auth-section">
+                    <button class="auth-btn" id="signInBtn" onclick="openAuthModal('signin')">Sign In</button>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <div class="user-avatar">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="userName">User</span>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+                            <a href="#orders"><i class="fas fa-box"></i> My Orders</a>
+                            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="nav-toggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -130,7 +149,7 @@
                     <img src="assets/Sleeping Bag.jpg" alt="Sleeping Bag">
                     <div class="card-content">
                         <h3>Premium Sleeping Bag</h3>
-                        <p>Comfortable sleeping bag suitable for Sri Lankan climate</p>
+                        <p>Sleeping bag suitable for Sri Lankan climate</p>
                         <div class="price">LKR 800 <span>/day</span></div>
                         <button class="add-to-cart-btn" onclick="addToCart('Premium Sleeping Bag', 800, 'assets/Sleeping Bag.jpg')">
                             <i class="fas fa-cart-plus"></i> Add to Cart
@@ -155,7 +174,7 @@
                     <img src="assets/Portable Gas Stove.jpg" alt="Portable Stove">
                     <div class="card-content">
                         <h3>Portable Gas Stove</h3>
-                        <p>Portable compact stove with gas canister included</p>
+                        <p>Compact stove with gas canister included</p>
                         <div class="price">LKR 1,200 <span>/day</span></div>
                         <button class="add-to-cart-btn" onclick="addToCart('Portable Gas Stove', 1200, 'assets/Portable Gas Stove.jpg')">
                             <i class="fas fa-cart-plus"></i> Add to Cart
@@ -192,7 +211,7 @@
                     <img src="assets/Hiking Backpack.jpg" alt="Backpack">
                     <div class="card-content">
                         <h3>Hiking Backpack</h3>
-                        <p>70L waterproof backpack with multiple compartments</p>
+                        <p>Waterproof backpack with multiple compartments</p>
                         <div class="price">LKR 700 <span>/day</span></div>
                         <button class="add-to-cart-btn" onclick="addToCart('Hiking Backpack', 700, 'assets/Hiking Backpack.jpg')">
                             <i class="fas fa-cart-plus"></i> Add to Cart
@@ -223,7 +242,7 @@
                 <div class="location-card">
                     <img src="assets/Yala National Park.jpg" alt="Yala National Park">
                     <div class="location-info">
-                        <h3>Yala National Park Sri Lanka</h3>
+                        <h3>Yala National Park</h3>
                         <p>Wildlife camping with leopard spotting opportunities</p>
                         <div class="location-features">
                             <span><i class="fas fa-paw"></i> Wildlife</span>
@@ -260,7 +279,7 @@
                     <img src="assets/Ella Rock.jpg" alt="Ella Rock">
                     <div class="location-info">
                         <h3>Ella Rock</h3>
-                        <p>Popular hiking trail with panoramic hill views</p>
+                        <p>Popular hiking trail with panoramic hill views and cool climate</p>
                         <div class="location-features">
                             <span><i class="fas fa-hiking"></i> Hiking</span>
                             <span><i class="fas fa-mountain"></i> Cliffs</span>
@@ -399,6 +418,144 @@
             </div>
         </div>
     </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <h4>Total: LKR <span id="cartTotal">0</span></h4>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()" disabled>Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content auth-modal-content">
+            <span class="close" onclick="closeAuthModal()">&times;</span>
+            
+            <!-- Sign In Form -->
+            <div id="signInForm" class="auth-form">
+                <h3>Sign In to CampLanka</h3>
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="signInEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" id="signInPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Sign In</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Don't have an account? <a href="#" onclick="switchToSignUp()">Sign Up</a></p>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signUpForm" class="auth-form" style="display: none;">
+                <h3>Create Your CampLanka Account</h3>
+                <form onsubmit="handleSignUp(event)">
+                    <div class="form-group">
+                        <label>Full Name:</label>
+                        <input type="text" id="signUpName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="signUpEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number:</label>
+                        <input type="tel" id="signUpPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" id="signUpPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password:</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="#" onclick="switchToSignIn()">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-modal-content">
+            <span class="close" onclick="closeCheckoutModal()">&times;</span>
+            <h3>Checkout</h3>
+            <div class="checkout-content">
+                <div class="checkout-items">
+                    <h4>Order Summary</h4>
+                    <div id="checkoutItemsList"></div>
+                    <div class="checkout-total">
+                        <h4>Total: LKR <span id="checkoutTotal">0</span></h4>
+                    </div>
+                </div>
+                <form id="checkoutForm" onsubmit="handleCheckout(event)">
+                    <h4>Rental Details</h4>
+                    <div class="form-group">
+                        <label>Rental Start Date:</label>
+                        <input type="date" id="rentalStartDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Rental Period (days):</label>
+                        <input type="number" id="rentalPeriod" min="1" value="1" required onchange="updateCheckoutTotal()">
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Location:</label>
+                        <select id="deliveryLocation" required>
+                            <option value="">Select Location</option>
+                            <option value="colombo">Colombo</option>
+                            <option value="gampaha">Gampaha</option>
+                            <option value="kalutara">Kalutara</option>
+                            <option value="kandy">Kandy</option>
+                            <option value="matale">Matale</option>
+                            <option value="nuwara-eliya">Nuwara Eliya</option>
+                            <option value="galle">Galle</option>
+                            <option value="matara">Matara</option>
+                            <option value="hambantota">Hambantota</option>
+                            <option value="jaffna">Jaffna</option>
+                            <option value="kilinochchi">Kilinochchi</option>
+                            <option value="mannar">Mannar</option>
+                            <option value="vavuniya">Vavuniya</option>
+                            <option value="mullaitivu">Mullaitivu</option>
+                            <option value="batticaloa">Batticaloa</option>
+                            <option value="ampara">Ampara</option>
+                            <option value="trincomalee">Trincomalee</option>
+                            <option value="kurunegala">Kurunegala</option>
+                            <option value="puttalam">Puttalam</option>
+                            <option value="anuradhapura">Anuradhapura</option>
+                            <option value="polonnaruwa">Polonnaruwa</option>
+                            <option value="badulla">Badulla</option>
+                            <option value="monaragala">Monaragala</option>
+                            <option value="ratnapura">Ratnapura</option>
+                            <option value="kegalle">Kegalle</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Instructions:</label>
+                        <textarea id="specialInstructions" rows="3" placeholder="Any special delivery instructions..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
