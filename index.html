@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampLanka - Premium Camping Equipment Rental</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.jpg" alt="CampLanka Logo" >
+                <span>CampLanka</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#equipment">Equipment</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <img src="assets/bg-hero.jpg" alt="Sri Lanka Camping">
+        </div>
+        <div class="hero-content">
+            <h1>Explore Sri Lanka's Wild Beauty</h1>
+            <p>Premium camping equipment rental for your ultimate adventure in the Pearl of the Indian Ocean</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('equipment')">Rent Equipment</button>
+                <button class="btn-secondary" onclick="scrollToSection('locations')">Explore Locations</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose CampLanka?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Premium Quality</h3>
+                    <p>High-quality, well-maintained equipment from trusted brands</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Island-wide Delivery</h3>
+                    <p>Free delivery to popular camping spots across Sri Lanka</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support for your peace of mind</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Best Prices</h3>
+                    <p>Competitive pricing with flexible rental periods</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment" class="equipment">
+        <div class="container">
+            <h2>Our Equipment Collection</h2>
+            <div class="equipment-categories">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="tents">Tents</button>
+                <button class="category-btn" data-category="sleeping">Sleeping</button>
+                <button class="category-btn" data-category="cooking">Cooking</button>
+                <button class="category-btn" data-category="accessories">Accessories</button>
+            </div>
+            <div class="equipment-grid" id="equipmentGrid">
+                <!-- Tents -->
+                <div class="equipment-card" data-category="tents">
+                    <img src="assets/tent(2).jpg" alt="2-Person Tent">
+                    <div class="card-content">
+                        <h3>2-Person Dome Tent</h3>
+                        <p>Waterproof, easy setup tent perfect for couples</p>
+                        <div class="price">LKR 1,500 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('2-Person Dome Tent', 1500, 'assets/tent(2).jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="equipment-card" data-category="tents">
+                    <img src="assets/tent(4).jpg" alt="4-Person Tent">
+                    <div class="card-content">
+                        <h3>4-Person Family Tent</h3>
+                        <p>Spacious family tent with separate compartments</p>
+                        <div class="price">LKR 2,500 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('4-Person Family Tent', 2500, 'assets/tent(4).jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="equipment-card" data-category="tents">
+                    <img src="assets/tent(6).jpg" alt="6-Person Tent">
+                    <div class="card-content">
+                        <h3>6-Person Group Tent</h3>
+                        <p>Large tent ideal for group camping adventures</p>
+                        <div class="price">LKR 3,500 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('6-Person Group Tent', 3500, 'assets/tent(6).jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sleeping -->
+                <div class="equipment-card" data-category="sleeping">
+                    <img src="assets/Sleeping Bag.jpg" alt="Sleeping Bag">
+                    <div class="card-content">
+                        <h3>Premium Sleeping Bag</h3>
+                        <p>Comfortable sleeping bag suitable for Sri Lankan climate</p>
+                        <div class="price">LKR 800 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Premium Sleeping Bag', 800, 'assets/Sleeping Bag.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="equipment-card" data-category="sleeping">
+                    <img src="assets/Inflatable Air Mattress.jpg" alt="Air Mattress">
+                    <div class="card-content">
+                        <h3>Inflatable Air Mattress</h3>
+                        <p>Self-inflating mattress for comfortable sleep</p>
+                        <div class="price">LKR 600 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Inflatable Air Mattress', 600, 'assets/Inflatable Air Mattress.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cooking -->
+                <div class="equipment-card" data-category="cooking">
+                    <img src="assets/Portable Gas Stove.jpg" alt="Portable Stove">
+                    <div class="card-content">
+                        <h3>Portable Gas Stove</h3>
+                        <p>Portable compact stove with gas canister included</p>
+                        <div class="price">LKR 1,200 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Portable Gas Stove', 1200, 'assets/Portable Gas Stove.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="equipment-card" data-category="cooking">
+                    <img src="assets/Camping Cookware Set.jpg" alt="Cookware Set">
+                    <div class="card-content">
+                        <h3>Camping Cookware Set</h3>
+                        <p>Complete set of pots, pans, kettle and utensils </p>
+                        <div class="price">LKR 900 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Camping Cookware Set', 900, 'assets/Camping Cookware Set.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Accessories -->
+                <div class="equipment-card" data-category="accessories">
+                    <img src="assets/LED Camping Lantern.jpg" alt="LED Lantern">
+                    <div class="card-content">
+                        <h3>LED Camping Lantern</h3>
+                        <p>Bright, rechargeable lantern with multiple modes</p>
+                        <div class="price">LKR 400 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('LED Camping Lantern', 400, 'assets/LED Camping Lantern.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="equipment-card" data-category="accessories">
+                    <img src="assets/Hiking Backpack.jpg" alt="Backpack">
+                    <div class="card-content">
+                        <h3>Hiking Backpack</h3>
+                        <p>70L waterproof backpack with multiple compartments</p>
+                        <div class="price">LKR 700 <span>/day</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Hiking Backpack', 700, 'assets/Hiking Backpack.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Locations -->
+    <section id="locations" class="locations">
+        <div class="container">
+            <h2>Popular Camping Destinations</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <img src="assets/Horton Plains.jpg" alt="Horton Plains">
+                    <div class="location-info">
+                        <h3>Horton Plains National Park</h3>
+                        <p>Experience the misty mountains and World's End cliff</p>
+                        <div class="location-features">
+                            <span><i class="fas fa-mountain"></i> Highland</span>
+                            <span><i class="fas fa-thermometer-half"></i> Cool Climate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <img src="assets/Yala National Park.jpg" alt="Yala National Park">
+                    <div class="location-info">
+                        <h3>Yala National Park Sri Lanka</h3>
+                        <p>Wildlife camping with leopard spotting opportunities</p>
+                        <div class="location-features">
+                            <span><i class="fas fa-paw"></i> Wildlife</span>
+                            <span><i class="fas fa-sun"></i> Warm Climate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <img src="assets/Knuckles Mountain Range.jpg" alt="Knuckles Range">
+                    <div class="location-info">
+                        <h3>Knuckles Mountain Range</h3>
+                        <p>UNESCO World Heritage site with pristine nature</p>
+                        <div class="location-features">
+                            <span><i class="fas fa-tree"></i> Forest</span>
+                            <span><i class="fas fa-eye"></i> Scenic Views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card">
+                    <img src="assets/Battalangunduwa.jpg" alt="Battalangunduwa Island">
+                    <div class="location-info">
+                        <h3>Battalangunduwa</h3>
+                        <p>Remote island with serene beaches and fishing life</p>
+                        <div class="location-features">
+                            <span><i class="fas fa-umbrella-beach"></i> Beach</span>
+                            <span><i class="fas fa-fish"></i> Fishing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card">
+                    <img src="assets/Ella Rock.jpg" alt="Ella Rock">
+                    <div class="location-info">
+                        <h3>Ella Rock</h3>
+                        <p>Popular hiking trail with panoramic hill views</p>
+                        <div class="location-features">
+                            <span><i class="fas fa-hiking"></i> Hiking</span>
+                            <span><i class="fas fa-mountain"></i> Cliffs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card">
+                    <img src="assets/Haritha Kanda.jpg" alt="Haritha Kanda">
+                    <div class="location-info">
+                        <h3>Haritha Kanda</h3>
+                        <p>Green-covered mountain perfect for trekking and camping</p>
+                        <div class="location-features">
+                            <span><i class="fas fa-campground"></i> Camping</span>
+                            <span><i class="fas fa-hiking"></i> Trekking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About CampLanka</h2>
+                    <p>Founded in 2020, CampLanka is Sri Lanka's premier camping equipment rental service. We're passionate about making outdoor adventures accessible to everyone, from weekend warriors to seasoned explorers.</p>
+                    <p>Our mission is to provide high-quality, reliable camping gear that enhances your connection with Sri Lanka's stunning natural landscapes. Whether you're planning a romantic getaway to the hill country or a family adventure in our national parks, we have the equipment you need.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Equipment Items</p>
+                        </div>
+                        <div class="stat">
+                            <h3>15+</h3>
+                            <p>Delivery Locations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/About.jpg" alt="About CampLanka">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+94 77 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@camplanka.lk</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>12, Yatinuwara Veediya, Kandy, Sri Lanka</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Your Phone">
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7?w=50&h=50&fit=crop&crop=center" alt="CampLanka Logo">
+                        <span>CampLanka</span>
+                    </div>
+                    <p>Your trusted partner for camping adventures in Sri Lanka</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#equipment">Equipment</a></li>
+                        <li><a href="#locations">Locations</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Equipment</h4>
+                    <ul>
+                        <li><a href="#equipment">Tents</a></li>
+                        <li><a href="#equipment">Sleeping Gear</a></li>
+                        <li><a href="#equipment">Cooking Equipment</a></li>
+                        <li><a href="#equipment">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +94 77 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@camplanka.lk</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 12, Yatinuwara Veediya, Kandy, Sri Lanka</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CampLanka. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
